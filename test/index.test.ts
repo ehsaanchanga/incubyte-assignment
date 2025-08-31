@@ -20,4 +20,9 @@ describe("add Numbers", () => {
     const actual = add("1,4,8\n7");
     expect(actual).toBe(20);
   });
+
+  it("should allow custom delimiter", () => {
+    const actual = add("//;\n1;4;8");
+    expect(actual).toBe(13);
+  });
 });
