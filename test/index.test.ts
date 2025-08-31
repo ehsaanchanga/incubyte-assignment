@@ -7,7 +7,7 @@ describe("add Numbers", () => {
   });
 
   it("should return added sum of numbers from the input string", () => {
-    const actual = add("148");
+    const actual = add("1,4,8");
     expect(actual).toBe(13);
   });
 
