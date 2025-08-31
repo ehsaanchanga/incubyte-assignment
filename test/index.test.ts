@@ -31,4 +31,9 @@ describe("add Numbers", () => {
       add("1,4,8,-4");
     }).toThrow("negative numbers not allowed: -4");
   });
+
+  it("should ignore numbers greater than 1000", () => {
+    const actual = add("1,4,8,1001");
+    expect(actual).toBe(13);
+  });
 });
