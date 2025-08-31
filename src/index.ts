@@ -8,5 +8,15 @@ export function add(str: string): number {
     numbers = str.substring(3);
   }
 
-  return numbers.split(customDelimiter).reduce((sum, a) => sum + Number(a), 0);
+  const parsedNumbers = numbers
+    .split(customDelimiter)
+    .map((n) => parseInt(n.trim(), 10))
+    .filter((n) => !isNaN(n));
+
+  const negatives = parsedNumbers.filter((n) => n < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed: ${negatives.join(", ")}`);
+  }
+
+  return parsedNumbers.reduce((sum, a) => sum + a, 0);
 }

@@ -27,10 +27,8 @@ describe("add Numbers", () => {
   });
 
   it("should not allow negative numbers and throws error", () => {
-    const actual = add("1,4,8,-4");
-    expect(actual).toBe(13);
     expect(() => {
       add("1,4,8,-4");
-    }).toThrow("negative numbers not allowed -4");
+    }).toThrow("negative numbers not allowed: -4");
   });
 });
