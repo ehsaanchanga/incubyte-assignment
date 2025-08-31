@@ -11,7 +11,8 @@ export function add(str: string): number {
   const parsedNumbers = numbers
     .split(customDelimiter)
     .map((n) => parseInt(n.trim(), 10))
-    .filter((n) => !isNaN(n));
+    .filter((n) => !isNaN(n))
+    .filter((n) => !isNaN(n) && !(n > 999));
 
   const negatives = parsedNumbers.filter((n) => n < 0);
   if (negatives.length > 0) {
