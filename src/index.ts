@@ -1,23 +1,23 @@
 export function add(str: string): number {
   const defaultDelimiter = /[,\n\s]/;
-  let customDelimiter: string | RegExp = defaultDelimiter;
-  let numbers: string = str;
+  let delimiter: string | RegExp = defaultDelimiter;
+  let numberString: string = str;
 
+  // Handle custom delimiter
   if (str.startsWith("//")) {
-    customDelimiter = str[2];
-    numbers = str.substring(3);
+    delimiter = str[2];
+    numberString = str.slice(3);
   }
 
-  const parsedNumbers = numbers
-    .split(customDelimiter)
+  const parsedNumbers = numberString
+    .split(delimiter)
     .map((n) => parseInt(n.trim(), 10))
-    .filter((n) => !isNaN(n))
-    .filter((n) => !isNaN(n) && !(n > 999));
+    .filter((n) => !isNaN(n) && n <= 999);
 
   const negatives = parsedNumbers.filter((n) => n < 0);
   if (negatives.length > 0) {
     throw new Error(`negative numbers not allowed: ${negatives.join(", ")}`);
   }
 
-  return parsedNumbers.reduce((sum, a) => sum + a, 0);
+  return parsedNumbers.reduce((sum, num) => sum + num, 0);
 }
